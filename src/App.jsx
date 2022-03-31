@@ -1,19 +1,25 @@
-import Header from './components/Header'
-import Hello from './hello';
-import Counter from './Counter';
-import React from "react";
-import { Button } from 'reactstrap';
+import React from 'react';
+import { Route, Routes } from 'react-router-dom';
+import Home from './pages/Home/Home';
+import Layout from './components/Layouts/Layout';
+import About from './pages/About/About';
+import NotFound from './components/NotFound/NotFound';
+
 import './App.css';
 
 function App() {
   return (
-    <>
-      <Header nama="tedy" alamat="Mojokerto" />
-      <Hello />
-      <Counter />
-      <Button color="primary">Button reactstrap</Button>
-    </>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Home />} />
+        <Route path="about" element={<About />} />
 
+        {/* Using path="*"" means "match anything", so this route
+                acts like a catch-all for URLs that we don't have explicit
+                routes for. */}
+      </Route>
+      <Route path="*" element={<NotFound />} />
+    </Routes>
   );
 }
 
