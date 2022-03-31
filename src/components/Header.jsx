@@ -1,5 +1,5 @@
 import styles from './header.module.css'
-
+import React from "react";
 function Header(props) {
     const { nama, alamat } = props;
     return (
